@@ -2,7 +2,6 @@ import prisma from "../server/prisma";
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt";
-import  {uploadFileToS3}  from "../app/api/s3Upload/route"; // adjust the path accordingly
 import axios from "axios"
 
 let avatarUrl:string;

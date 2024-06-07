@@ -9,7 +9,7 @@ const LoginButton = () => {
     const user = session.data?.user;
   return (
     <>
-    {!user ? <Link href={"/api/auth/signin"}><Button>Get Started</Button></Link>: <Link href={`/profile/${user.id!}`}><Button >Profile</Button></Link>}
+    {!user ? <Link href={"/api/auth/signin"}><Button>Get Started</Button></Link>: <Link href={`/profile/${user.name}`}><Button >Profile</Button></Link>}
     </>
   )
 }

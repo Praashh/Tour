@@ -43,7 +43,7 @@ export default function HomePage() {
                 </h1>
                 <p className="text-gray-500 md:text-xl dark:text-gray-400">
                   Tour is a YC-backed startup that helps businesses automate their sales process with a conversational
-                  AI assistant. Increase your sales team\'s productivity and close more deals with Tour.
+                  AI assistant. Increase your sales team s productivity and close more deals with Tour.
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row">
                 <Button>Get Started</Button>
@@ -73,7 +73,7 @@ export default function HomePage() {
                   Powerful features to scale your sales
                 </h2>
                 <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Tour\'s conversational AI assistant helps your sales team automate lead qualification, schedule
+                  Tour s conversational AI assistant helps your sales team automate lead qualification, schedule
                   meetings, and close more deals.
                 </p>
               </div>
@@ -82,19 +82,19 @@ export default function HomePage() {
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Lead Qualification</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Tour\'s AI assistant can automatically qualify leads and schedule meetings with the right prospects.
+                  Tour s AI assistant can automatically qualify leads and schedule meetings with the right prospects.
                 </p>
               </div>
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Automated Outreach</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Personalize your outreach at scale with Tour\'s automated email and SMS campaigns.
+                  Personalize your outreach at scale with Tour s automated email and SMS campaigns.
                 </p>
               </div>
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Intelligent Insights</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Get real-time insights on your sales pipeline and performance with Tour\'s analytics dashboard.
+                  Get real-time insights on your sales pipeline and performance with Tour s analytics dashboard.
                 </p>
               </div>
               <div className="grid gap-1">
@@ -107,13 +107,13 @@ export default function HomePage() {
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Personalized Assistance</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Tour\'s AI assistant can adapt to your unique sales process and provide personalized recommendations.
+                  Tour s AI assistant can adapt to your unique sales process and provide personalized recommendations.
                 </p>
               </div>
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Scalable Performance</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  As your business grows, Tour\'s platform can scale to handle increasing sales volume and complexity.
+                  As your business grows, Tour s platform can scale to handle increasing sales volume and complexity.
                 </p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-4">
                     <Avatar>
-                      <img src="https://github.com/shadcn.png" />
+                      <Image src="https://github.com/shadcn.png" alt={""} />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>
@@ -146,8 +146,8 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    "Tour has been a game-changer for our sales team. The\n conversational AI assistant has helped us
-                    qualify leads\n faster and close more deals."
+                    Tour has been a game-changer for our sales team. The n conversational AI assistant has helped us
+                    qualify leads n faster and close more deals.
                   </p>
                 </CardContent>
               </Card>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-4">
                     <Avatar>
-                      <img src="https://github.com/shadcn.png" />
+                      <Image src="https://github.com/shadcn.png" alt={""} />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>
@@ -164,8 +164,8 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    "Tour has been a game-changer for our sales team. The\n conversational AI assistant has helped us
-                    qualify leads\n faster and close more deals."
+                    Tour has been a game-changer for our sales team. The  conversational AI assistant has helped us
+                    qualify leads n faster and close more deals.
                   </p>
                 </CardContent>
               </Card>
@@ -173,7 +173,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-4">
                     <Avatar>
-                      <img src="https://github.com/shadcn.png" />
+                      <Image src="https://github.com/shadcn.png" alt={""} />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>
@@ -182,8 +182,8 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    "Tour has been a game-changer for our sales team. The\n conversational AI assistant has helped us
-                    qualify leads\n faster and close more deals."
+                    Tour has been a game-changer for our sales team. The n conversational AI assistant has helped us
+                    qualify leads n faster and close more deals.
                   </p>
                 </CardContent>
               </Card>

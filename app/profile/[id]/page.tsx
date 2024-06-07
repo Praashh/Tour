@@ -2,8 +2,8 @@ import React from 'react';
 import prisma from '../../../server/prisma'; 
 import UserProfile from '../../../components/ui/user-profile';
 
-const ProfilePage = async ({ params }) => {
-    const { id } = params;
+const ProfilePage = async ({ params }:any) => {
+    const { id } = params || "";
 
     const user = await prisma.user.findUnique({
         where: { id: id },

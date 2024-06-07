@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+
+import { NextResponse, NextRequest } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const s3Client = new S3Client({
@@ -9,7 +10,7 @@ const s3Client = new S3Client({
     }
 });
 
-export async function uploadFileToS3(file: Buffer, fileName: any, contentType: any) {
+async function uploadFileToS3(file: Buffer, fileName: any, contentType: any) {
     const fileBuffer = file;
     console.log(fileName);
 
@@ -25,9 +26,9 @@ export async function uploadFileToS3(file: Buffer, fileName: any, contentType: a
     return fileName;
 }
 
-export async function POST(request: { formData: () => any; }) {
+export async function POST(NextRequest: any) {
     try {
-        const formData = await request.formData();
+        const formData = await NextRequest.formData();
         const file = formData.get("file");
 
         if (!file) {
