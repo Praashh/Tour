@@ -1,6 +1,6 @@
 import React from "react"
 import {Card, CardContent, CardHeader} from "@/../../components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage} from "@/../../components/ui/avatar"
+import { Avatar, AvatarFallback} from "@/../../components/ui/avatar"
 import { Separator } from "@/../../components/ui/separator"
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ export default function UserProfile({imageURL, name, email, role, bio}:UserProfi
     <Card className="w-full max-w-md">
       <CardHeader className="flex items-center gap-4">
         <Avatar className="h-16 w-16 border-2 border-gray-200 dark:border-gray-700">
-          <Image src={imageURL} alt="@shadcn" />
+          <Image src={imageURL? imageURL : ""} alt="@shadcn" height={100} width={100}/>
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div className="grid gap-1">

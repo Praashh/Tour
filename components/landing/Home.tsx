@@ -137,7 +137,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-4">
                     <Avatar>
-                      <Image src="https://github.com/shadcn.png" alt={""} />
+                      <img src="https://github.com/shadcn.png" alt={""} width={100} height={100} />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-4">
                     <Avatar>
-                      <Image src="https://github.com/shadcn.png" alt={""} />
+                      <img src="https://github.com/shadcn.png" alt={""} />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>
@@ -173,7 +173,7 @@ export default function HomePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-4">
                     <Avatar>
-                      <Image src="https://github.com/shadcn.png" alt={""} />
+                      <img src="https://github.com/shadcn.png" alt={""} />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>

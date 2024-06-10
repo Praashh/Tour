@@ -13,7 +13,7 @@ export const authOptions = {
                 email: { label: "Email", type: "email", placeholder: "xyz.tour@gmail.com", required: true },
                 name: { label: "Username", type: "text", placeholder: "Username", required: true },
                 Bio: { label: "Bio", type: "text", placeholder: "I like coding", required: true },
-                Avatar: { label: "Avatar", type: "file", required: true },
+                // Avatar: { label: "Avatar", type: "file", required: false },
                 role: { label: "Role", type: "text", placeholder: "employee", required: true },
                 password: { label: "Password", type: "password", required: true },
 
@@ -36,7 +36,7 @@ export const authOptions = {
                             name: existingUser.name,
                             email: existingUser.email,
                             Bio: existingUser.Bio,
-                            Aavatar: existingUser.Avatar,
+                            // Aavatar: existingUser.Avatar,
                             role: existingUser.role
                         }
                     }
@@ -45,28 +45,28 @@ export const authOptions = {
                 console.log("dot dot dotS");
                 
                 //  upload avatar to cloudfront and use that url
-                const file = credentials.Avatar;
-                const formData = new FormData();
-                formData.append('file', file);
-                console.log(file);
+                // const file = credentials.Avatar;
+                // const formData = new FormData();
+                // formData.append('file', file);
+                // console.log(file);
                 
-                try {
-                    const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/s3Upload`, formData);
-                    console.log(response);
+                // try {
+                //     const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/s3Upload`, formData);
+                //     console.log(response);
                     
-                    avatarUrl = response.data.imageUrl;
+                //     avatarUrl = response.data.imageUrl;
                     
-                } catch (error) {
-                    console.error('Error uploading file:', error);
-                }
-                console.log(avatarUrl);
+                // } catch (error) {
+                //     console.error('Error uploading file:', error);
+                // }
+                // console.log(avatarUrl);
                 
                 try {
                     const user = await prisma.user.create({
                         data: {
                             email: credentials.email,
                             password: hashedPassword,
-                            Avatar: avatarUrl,
+                            // Avatar: avatarUrl,
                             Bio: credentials.Bio,
                             name: credentials.name,
                             role: credentials.role,
@@ -77,7 +77,7 @@ export const authOptions = {
                         id: user.id,
                         name: user.name,
                         email: user.email,
-                        Avatar: user.Avatar,
+                        // Avatar: user.Avatar,
                         Bio: user.Bio,
                         role: user.role,
                     }
