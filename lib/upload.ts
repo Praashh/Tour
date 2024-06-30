@@ -1,35 +1,31 @@
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { v4 } from 'uuid';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 const s3Client = new S3Client({
-    region: process.env.NEXT_PUBLIC_AWS_S3_REGION || "",
-    credentials: {
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_ID || "",
-        secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_SECRET || "",
-    }
+  region: process.env.NEXT_PUBLIC_AWS_S3_REGION || "",
+  forcePathStyle: true,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_ID || "",
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_SECRET || "",
+  }
 });
 
-export async function uploadFileToS3(file: any, fileName: any, contentType: any) {
-    const params = {
-        Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME,
-        Key: fileName,
-        Body: file,
-        ContentType: contentType
-    };
+export const createDocument = async (
+  file: File,
+): Promise<string> => {
+  const docId = v4();
+  const fileName = file.name;
 
-    const command = new PutObjectCommand(params);
-    await s3Client.send(command);
+  const params = {
+    Body: Buffer.from(await file.arrayBuffer()),
+    Bucket: process.env.S3_BUCKET as string,
+    Key: docId,
+    ContentType: file.type,
+  };
 
-    return `https://${process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${fileName}`;
-}
+  const uploadCommand = new PutObjectCommand(params);
+  await s3Client.send(uploadCommand);
+  const imageUrl = `https://${process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${docId}`;
 
-export async function handleFileUpload(file: { arrayBuffer: () => WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer> | PromiseLike<WithImplicitCoercion<ArrayBuffer | SharedArrayBuffer>>; name: any; type: any; }) {
-    if (!file) {
-        throw new Error("File is required.");
-    }
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const fileName = file.name;
-    const contentType = file.type;
-
-    return await uploadFileToS3(buffer, fileName, contentType);
-}
+  return imageUrl;
+};

@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt";
 import axios from "axios"
+import { createDocument } from "./upload";
 
 let avatarUrl:string;
 export const authOptions = {
@@ -13,7 +14,7 @@ export const authOptions = {
                 email: { label: "Email", type: "email", placeholder: "xyz.tour@gmail.com", required: true },
                 name: { label: "Username", type: "text", placeholder: "Username", required: true },
                 Bio: { label: "Bio", type: "text", placeholder: "I like coding", required: true },
-                // Avatar: { label: "Avatar", type: "file", required: false },
+                Avatar: { label: "Avatar", type: "file", required: true },
                 role: { label: "Role", type: "text", placeholder: "employee", required: true },
                 password: { label: "Password", type: "password", required: true },
 
@@ -36,48 +37,56 @@ export const authOptions = {
                             name: existingUser.name,
                             email: existingUser.email,
                             Bio: existingUser.Bio,
-                            // Aavatar: existingUser.Avatar,
+                            Aavatar: existingUser.Avatar,
                             role: existingUser.role
                         }
                     }
                     return null;
                 }
-                console.log("dot dot dotS");
+                console.log("existingUser did not find");
                 
                 //  upload avatar to cloudfront and use that url
-                // const file = credentials.Avatar;
-                // const formData = new FormData();
-                // formData.append('file', file);
-                // console.log(file);
+                console.log("uploading image to s3");
                 
-                // try {
-                //     const response = await axios.post(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/s3Upload`, formData);
-                //     console.log(response);
+                const file = credentials.Avatar;
+                console.log(file);
+
+                const formData = new FormData();
+    
+                // Append the file to the FormData object
+                formData.append('file', file);
+                
+                try {
+                    // const response = createDocument(file).then(res=> avatarUrl=res)
+                    const response = await axios.post('http://localhost:3000/api/s3Upload', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
+                    console.log("response from function", response);
                     
-                //     avatarUrl = response.data.imageUrl;
-                    
-                // } catch (error) {
-                //     console.error('Error uploading file:', error);
-                // }
-                // console.log(avatarUrl);
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                }
+                console.log("avatarUrl",avatarUrl);
                 
                 try {
                     const user = await prisma.user.create({
                         data: {
                             email: credentials.email,
                             password: hashedPassword,
-                            // Avatar: avatarUrl,
+                            Avatar: avatarUrl,
                             Bio: credentials.Bio,
                             name: credentials.name,
                             role: credentials.role,
                         }
                     });
-
+                    console.log("user ", user)
                     return {
                         id: user.id,
                         name: user.name,
                         email: user.email,
-                        // Avatar: user.Avatar,
+                        Avatar: user.Avatar,
                         Bio: user.Bio,
                         role: user.role,
                     }
