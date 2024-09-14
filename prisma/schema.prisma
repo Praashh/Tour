@@ -18,4 +18,11 @@ model User {
   Avatar String?
   role  String?
   password String?
+  feedback Feedback[]
+}
+
+model Feedback{
+  id    String     @id @default(cuid())
+  userid String
+  user  User @relation(fields: [userid], references: [id])
 }

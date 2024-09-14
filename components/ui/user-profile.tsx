@@ -16,7 +16,7 @@ export default function UserProfile({imageURL, name, email, role, bio}:UserProfi
     <Card className="w-full max-w-md">
       <CardHeader className="flex items-center gap-4">
         <Avatar className="h-16 w-16 border-2 border-gray-200 dark:border-gray-700">
-          <Image src={imageURL? imageURL : ""} alt="@shadcn" height={100} width={100}/>
+          <Image src={imageURL} alt="@shadcn" height={100} width={100}/>
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div className="grid gap-1">
