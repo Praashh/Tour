@@ -95,7 +95,7 @@ const Feedback = () => {
                 className="absolute top-0 left-0 w-full h-full"
                 title="Thank you video"
                 playsInline
-                loop
+                loop = {true}
               >
                 <source src="/done_video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
