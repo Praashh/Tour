@@ -1,18 +1,17 @@
 "use client"
-import Link from "next/link"
 import React from "react"
-import {Button} from "@/../../components/ui/button"
-import {Card, CardContent} from "@/../../components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage} from "@/../../components/ui/avatar"
-import {Input} from "@/../../components/ui/input"
-import Image from "next/image"
-import homeImage from "@/public/home.png"
-import LoginButton from "@/components/ui/LoginButton"
 import Feedback from "./feedback"
+import { Navbar } from "./Navbar"
+import { useSession } from "next-auth/react"
 export default function HomePage() {
+  const {data}  = useSession();
   return (
-<>
-<Feedback/>
-</>
+    <>
+      <Navbar />
+      {
+        data?.user ? <Feedback /> : <div className="h-screen w-full flex justify-center items-center"><span className="text-2xl font-medium">Login First</span></div>
+      }
+      
+    </>
   )
 }
